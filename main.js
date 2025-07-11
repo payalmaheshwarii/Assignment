@@ -1,7 +1,7 @@
 function expandRanges(input) {
 
   const result = [];
-  const ranges = input.split(',');
+  const ranges = input.split(',').map(part => part.trim()).filter(Boolean);
 
   for (const part of ranges) {
     if (part.includes('-')) {
