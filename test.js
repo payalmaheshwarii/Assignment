@@ -33,3 +33,6 @@ console.log(main("1-10:2")); // [1, 3, 5, 7, 9]
 
 //stage 6
 console.log(main(" , 1-5 , ,5-7, 10-20  , 12-16")); // [1, 2, 3, 5, 6, 7, 10, ..., 20]
+
+//stage 7
+console.log(main(" , 1-5 , ,5-7, 10-20  , 12-16", "set")); //can be set, csv or list

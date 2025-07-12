@@ -1,6 +1,5 @@
 const RANGE_DELIMITERS = ['-', '..', 'to', '~'];
 
-
 // Utility to split by commas and remove empty parts
 function extractTokens(str) {
   return str.split(',').map(s => s.trim()).filter(Boolean);
@@ -62,7 +61,24 @@ function mergeSimpleRanges(ranges) {
   return [...merged, ...others];  // Add unmerged step>1 ranges as-is
 }
 
-function main(input) {
+//change output format
+function changeOutputFormat(output, format) {
+  switch (format) {
+    case "list":
+      return output;
+
+    case "csv":
+      return output.join(",");
+
+    case "set":
+      return new Set(output);
+
+    default:
+      throw new Error(`Unsupported format: ${format}`);
+  }
+}
+
+function main(input, format = "list") {
 
   const tokens = extractTokens(input);
   const delimiter = findDelimiter(input);
@@ -97,6 +113,8 @@ function main(input) {
   for (const r of merged) {
     output.push(...makeRange(r.start, r.end, r.step));
   }
+
+  output = changeOutputFormat(output, format);
   return output;
 }
 
